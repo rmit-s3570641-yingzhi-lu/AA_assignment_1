@@ -1,8 +1,4 @@
-package com.company;
-
 public class Main {
-
-
 
     public static void main(String[] args) {
 	// write your code here
@@ -14,6 +10,7 @@ public class Main {
 
     public void printOperation(){
         System.out.println("here is the printout operation without ordering");
+        System.out.println("input format: P");
         System.out.println("output format: <element> | <number of instances in the multiset>");
     }
 
