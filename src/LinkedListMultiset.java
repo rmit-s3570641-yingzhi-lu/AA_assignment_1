@@ -63,15 +63,19 @@ public class LinkedListMultiset<T> extends Multiset<T> {
 
     public Node isExisted(T item) {
 
-        Node currNode = mHead;
 
-        for (int i = 0; i < mLength; i++) {
-            if (currNode.getValue().equals(item)) {
-                return currNode;
+        Node currNode = mHead;
+        if (currNode != null) {
+            for (int i = 0; i < mLength; i++) {
+                if (currNode.getValue().equals(item)) {
+                    return currNode;
+                }
+                currNode = currNode.getNext();
             }
-            currNode = currNode.getNext();
+            return null;
+        } else {
+            return null;
         }
-        return null;
 
     }
 
@@ -96,15 +100,14 @@ public class LinkedListMultiset<T> extends Multiset<T> {
         if (existedNode != null) {
             if (existedNode.getNumber() > 1) {
                 existedNode.number--;
-            }else{
+            } else if (existedNode.getNext() != null) {
 
-                if(existedNode==mHead){
-                    mHead=existedNode.getNext();
+                if (existedNode == mHead) {
+                    mHead = existedNode.getNext();
                     mHead.setPrev(null);
-
-                    existedNode=null;
-                }else{
-                    Node preNode= existedNode.getPrev();
+                    existedNode = null;
+                } else {
+                    Node preNode = existedNode.getPrev();
                     preNode.setNext(existedNode.getNext());
 
                     if (existedNode.getNext() != null) {
@@ -113,10 +116,15 @@ public class LinkedListMultiset<T> extends Multiset<T> {
                         mTail = preNode;
                     }
 
-                    existedNode=null;
+                    existedNode = null;
                 }
 
                 mLength--;
+
+            } else {
+                mHead = null;
+                mTail = null;
+                existedNode = null;
             }
         }
 
@@ -129,14 +137,16 @@ public class LinkedListMultiset<T> extends Multiset<T> {
 
         if (existedNode != null) {
 
-                if(existedNode==mHead){
-                    mHead=existedNode.getNext();
+            if (existedNode.getNext() != null) {
+
+                if (existedNode == mHead) {
+                    mHead = existedNode.getNext();
                     mHead.setPrev(null);
-                    existedNode=null;
+                    existedNode = null;
 
-                }else{
+                } else {
 
-                    Node preNode= existedNode.getPrev();
+                    Node preNode = existedNode.getPrev();
                     preNode.setNext(existedNode.getNext());
 
                     if (existedNode.getNext() != null) {
@@ -145,11 +155,16 @@ public class LinkedListMultiset<T> extends Multiset<T> {
                         mTail = preNode;
                     }
 
-                    existedNode=null;
+                    existedNode = null;
                 }
 
                 mLength--;
+            } else {
+                mHead = null;
+                mTail = null;
+                existedNode = null;
             }
+        }
 
     } // end of removeAll()
 

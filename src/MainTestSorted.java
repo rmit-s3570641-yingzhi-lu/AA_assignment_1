@@ -2,6 +2,42 @@ public class MainTestSorted {
 
     public static void main(String[] args) {
 
+        int number=1000;
+        DataGenerator generator=new DataGenerator();
+
+        int[] sample = generator.multiSets(number);
+
+        for (int i = 0; i <10; i++) {
+            test(number,sample);
+        }
+
+    }
+
+    public static void test(int number,int[] samples){
+
+        SortedLinkedListMultiset<String> sortedLinkedListMultiset=new SortedLinkedListMultiset<>();
+
+        long startTime = System.nanoTime();
+        for (int i = 0; i < number; i++) {
+            sortedLinkedListMultiset.add(String.valueOf(samples[i]));
+        }
+        long endTime = System.nanoTime();
+        System.out.println("Addition time taken = " + ((double)(endTime - startTime)) / Math.pow(7, 6) + " ms");
+
+
+        startTime = System.nanoTime();
+        for (int i = 0; i < number; i++) {
+            sortedLinkedListMultiset.removeAll(String.valueOf(samples[i]));
+        }
+        endTime = System.nanoTime();
+
+        System.out.println("Removal time taken = " + ((double)(endTime - startTime)) / Math.pow(7, 6) + " ms");
+
+        System.out.println("");
+    }
+
+    /*public static void main(String[] args) {
+
         //test 2
         System.out.println("=========test 2==============");
         SortedLinkedListMultiset<String> s2=new SortedLinkedListMultiset<>();
@@ -102,5 +138,5 @@ public class MainTestSorted {
 
 
 
-    }
+    }*/
 }

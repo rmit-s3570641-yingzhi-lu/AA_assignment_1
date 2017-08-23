@@ -83,13 +83,18 @@ public class SortedLinkedListMultiset<T extends Comparable> extends Multiset<T> 
 
         Node currNode = mHead;
 
-        for (int i = 0; i < mLength; i++) {
-            if (currNode.getValue().equals(item)) {
-                return currNode;
+        if (currNode != null) {
+
+            for (int i = 0; i < mLength; i++) {
+                if (currNode.getValue().equals(item)) {
+                    return currNode;
+                }
+                currNode = currNode.getNext();
             }
-            currNode = currNode.getNext();
+            return null;
+        }else{
+            return null;
         }
-        return null;
 
     }
 
@@ -117,7 +122,7 @@ public class SortedLinkedListMultiset<T extends Comparable> extends Multiset<T> 
         if (existedNode != null) {
             if (existedNode.getNumber() > 1) {
                 existedNode.number--;
-            }else{
+            }else if (existedNode.getNext() != null){
 
                 if(existedNode==mHead){
                     mHead=existedNode.getNext();
@@ -139,6 +144,10 @@ public class SortedLinkedListMultiset<T extends Comparable> extends Multiset<T> 
                 }
 
                 mLength--;
+            }else {
+                mHead = null;
+                mTail = null;
+                existedNode = null;
             }
         }
     } // end of removeOne()
@@ -149,6 +158,8 @@ public class SortedLinkedListMultiset<T extends Comparable> extends Multiset<T> 
         Node existedNode = isExisted(item);
 
         if (existedNode != null) {
+
+            if (existedNode.getNext() != null) {
 
             if(existedNode==mHead){
                 mHead=existedNode.getNext();
@@ -170,6 +181,11 @@ public class SortedLinkedListMultiset<T extends Comparable> extends Multiset<T> 
             }
 
             mLength--;
+        }else {
+                mHead = null;
+                mTail = null;
+                existedNode = null;
+            }
         }
     } // end of removeAll()
 

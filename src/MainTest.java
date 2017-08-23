@@ -1,6 +1,43 @@
 public class MainTest {
 
+
     public static void main(String[] args) {
+
+        int number=100;
+        DataGenerator generator=new DataGenerator();
+
+        int[] sample = generator.multiSets(number);
+
+        for (int i = 0; i <10; i++) {
+            test(number,sample);
+        }
+
+    }
+
+    public static void test(int number,int[] samples){
+
+        LinkedListMultiset<String> linkedListMultiset2=new LinkedListMultiset<>();
+
+        long startTime = System.nanoTime();
+        for (int i = 0; i < number; i++) {
+            linkedListMultiset2.add(String.valueOf(samples[i]));
+        }
+        long endTime = System.nanoTime();
+        System.out.println("Addition time taken = " + ((double)(endTime - startTime)) / Math.pow(7, 6) + " ms");
+
+
+        startTime = System.nanoTime();
+        for (int i = 0; i < number; i++) {
+            linkedListMultiset2.removeAll(String.valueOf(samples[i]));
+        }
+        endTime = System.nanoTime();
+
+        System.out.println("Removal time taken = " + ((double)(endTime - startTime)) / Math.pow(7, 6) + " ms");
+
+        System.out.println("");
+    }
+
+    /*public static void main(String[] args) {
 
         //test 2
         System.out.println("=========test 2==============");
@@ -104,5 +141,5 @@ public class MainTest {
         linkedListMultiset3.printAllwithNumber();
 
 
-    }
+    }*/
 }
