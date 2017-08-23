@@ -12,6 +12,7 @@ public class MainTest {
             test(number,sample);
         }
 
+
     }
 
     public static void test(int number,int[] samples){

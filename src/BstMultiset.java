@@ -96,6 +96,7 @@ public class BstMultiset<T extends Comparable> extends Multiset<T> {
         if(mLength==1){
             mRoot=null;
             return;
+
         }else {
             TreeNode node = isExisted(mRoot, item);
             if (search(item) > 1) {
@@ -111,6 +112,7 @@ public class BstMultiset<T extends Comparable> extends Multiset<T> {
         if (mLength == 1) {
             mRoot = null;
             return;
+
         } else {
 
             TreeNode node = isExisted(mRoot, item);

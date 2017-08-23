@@ -2,7 +2,7 @@ public class MainTestBst {
 
     public static void main(String[] args) {
 
-        int number=10000;
+        int number=1000;
         DataGenerator generator=new DataGenerator();
 
         int[] sample = generator.multiSets(number);
